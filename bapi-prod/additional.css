@@ -1,4 +1,11 @@
-/* Fix: close the input/textarea rule, then apply full-width overrides */
+/* Remove left-sidebar layout and sidebar */
+.left-sidebar .content-area {
+  width: 100% !important;
+  float: none !important;
+}
+.left-sidebar .woo-sidebar {
+  display: none !important;
+}
 
 /* Restore proper input sizing */
 input,
@@ -14,88 +21,35 @@ textarea {
   max-width: 100% !important;
 }
 
-/* Ensure the site container is full-width */
 .site,
-#page {
-  max-width: none !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Ensure header and col-full containers expand too */
+#page,
 .site-header .header-wrap,
 .col-full {
-  max-width: none !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Optional: prevent top-right toolbar from clipping (only if you see overflow) */
-.global-wrap .global-stuff {
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  justify-content: flex-end;
-  right: 0;
-  left: auto;
-  max-width: calc(100% - 36px);
-  flex-wrap: wrap;
+  max-width: none;
+  width: 100% ;
   box-sizing: border-box;
-  z-index: 9999;
+	padding-left:24px;
+	padding-right: 24px;
 }
 
-.global-wrap .global-stuff .item a {
-  display: inline-block;
-  max-width: 9rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
-.global-wrap .global-stuff .menu-item .sub-menu,
-.global-wrap .region-wrap {
+.global-nav {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative; /* changed from absolute */
+  top: 0;
+  z-index: var(--z-modal);
   right: 0;
-  left: auto;
-  transform-origin: top right;
+  font-size: 17px;
+  letter-spacing: 0.09px;
+	margin-left: auto;
+	margin-right: 180px;
+	width: fit-content;
 }
 
-/* GTranslate global dropdown fix — Apply site-wide (Appearance → Customize → Additional CSS)
-   Forces the GTranslate dropdown to render fixed and on top so it won't be clipped by ancestors
-   that have overflow:hidden or transforms.
-*/
-[id^="gtranslate_menu_wrapper_"] .gt_switcher .gt_container--yaz0yc,
-[id^="gtranslate_menu_wrapper_"] .gt_switcher .gt_container--yaz0yc > *,
-.gt_switcher .gt_container--yaz0yc,
-.gt_container--yaz0yc,
-#google_translate_element2 .gt_container--yaz0yc,
-iframe.goog-te-menu-frame,
-.goog-te-menu-frame {
-  position: fixed !important;
-  top: 64px !important;        /* Adjust if your header is taller */
-  right: 16px !important;      /* aligns to the right of header */
-  left: auto !important;
-  z-index: 2147483647 !important; /* very high z-index so it appears above everything */
-  display: block !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  opacity: 1 !important;
-}
 
-/* Ensure child elements receive pointer events */
-[id^="gtranslate_menu_wrapper_"] .gt_switcher .gt_container--yaz0yc *,
-.gt_switcher .gt_container--yaz0yc * {
-  pointer-events: auto !important;
-}
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  [id^="gtranslate_menu_wrapper_"] .gt_switcher .gt_container--yaz0yc,
-  .gt_switcher .gt_container--yaz0yc,
-  .gt_container--yaz0yc,
-  iframe.goog-te-menu-frame {
-    top: 56px !important;
-    right: 12px !important;
-    max-height: calc(100vh - 72px) !important;
-    overflow: auto !important;
-  }
-}
+
+
+

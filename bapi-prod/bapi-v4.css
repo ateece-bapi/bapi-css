@@ -1,3 +1,13 @@
+/* Restore multi-column product grid layout */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+.products .product {
+    flex: 1 1 300px;
+    box-sizing: border-box;
+}
 /*
 Theme Name: BAPI V4
 Theme URI: http://www.bapihvac.com

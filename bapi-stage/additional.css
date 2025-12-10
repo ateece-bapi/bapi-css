@@ -1,4 +1,3 @@
-
 input,
 .input-text,
 input[type=email],
@@ -17,145 +16,24 @@ textarea {
 #page,
 .site-header .header-wrap,
 .col-full {
-  max-width: none !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+  max-width: none;
+  width: 100% ;
+  box-sizing: border-box ;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
-/* Ensure header & page wrapper do not clip dropdowns */
-/*
-header#masthead.site-header,
-header#masthead .header-wrap,
-div.global-wrap,
-div.col-full,
-div#page.hfeed.site {
-  overflow: visible !important;
-  box-sizing: border-box;
-}
-*/
-
-/* ---------- nav layout: keep in normal flow, small safe gutter ---------- */
-nav.global-nav,
-ul#menu-demo-top-top-menu.main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.35rem;
-  padding-right: 18px;   /* small gutter from viewport edge */
-  box-sizing: border-box;
-  position: relative;    /* keep predictable stacking context, but do not absolute-position */
-  z-index: 1200;         /* moderate z-index so menu appears above header decor */
-  pointer-events: auto;
-}
-
-/* keep items compact with ellipsis fallback */
-
-/*
-ul#menu-demo-top-top-menu.main-nav > li {
-  white-space: nowrap;
-  min-width: 0;
-  flex-shrink: 0;
-}
-ul#menu-demo-top-top-menu.main-nav > li > a {
-  display: inline-block;
-  max-width: 9rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: 8px 12px;
-  box-sizing: border-box;
-}
-*/
-/* ---------- "Choose your region" submenu: left-aligned, constrained ---------- */
-
-
-/* Parent positioned so submenu positions relative to it */
-/*
-ul#menu-demo-top-top-menu.main-nav li#menu-item-405428 {
-  position: relative;
-  box-sizing: border-box;
-}
-*/
-/* Left-align submenu directly under its trigger; constrain width to viewport */
-
-/*
-ul#menu-demo-top-top-menu.main-nav li#menu-item-405428 > .sub-menu {
-  position: absolute !important;
-  top: calc(100% + 4px) !important;   /* small gap; reduce to 0 if you want flush */
-/*
-  left: 0 !important;                  /* align under trigger */
-/*
-  right: auto !important;
-  box-sizing: border-box;
-  max-width: calc(100vw - 40px) !important; /* keep a small gutter from viewport edge */
-/*
-  width: auto !important;
-  min-width: 180px;
-  padding: 8px 10px !important;
-  overflow-y: auto !important;         /* scroll if tall */
-/*
-  overflow-x: hidden !important;
-  white-space: normal !important;
-  z-index: 20000 !important;           /* ensure submenu sits above header visuals */
-}
-*/
-/* Constrain nested submenus (region groups) so they don't run off-screen */
-/*
-ul#menu-demo-top-top-menu.main-nav li#menu-item-405428 .sub-menu .sub-menu {
-  position: absolute !important;
-  top: 0 !important;
-  left: 100% !important;               /* nested opens to the right by default */
-
-/*
-  right: auto !important;
-  max-width: calc(100vw - 220px) !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  box-sizing: border-box;
-  z-index: 20001 !important;
-  min-width: 160px;
-}
-
-/* Make nested submenus open leftwards on small screens to avoid overflow */ /*
-@media (max-width: 900px) {
-  ul#menu-demo-top-top-menu.main-nav li#menu-item-405428 .sub-menu .sub-menu {
-    left: auto !important;
-    right: 0 !important;
-    max-width: calc(100vw - 40px) !important;
-  }
-}
-*/
-/* ---------- responsive tweaks ---------- */ /*
-@media (max-width: 1300px) {
-  nav.global-nav,
-  ul#menu-demo-top-top-menu.main-nav { padding-right: 14px; }
-  ul#menu-demo-top-top-menu.main-nav > li > a { max-width: 8rem; }
-}
-@media (max-width: 1000px) {
-  nav.global-nav,
-  ul#menu-demo-top-top-menu.main-nav { padding-right: 10px; gap: 0.3rem; }
-  ul#menu-demo-top-top-menu.main-nav > li > a { max-width: 7rem; font-size: 14px; padding: 7px 9px; }
-  ul#menu-demo-top-top-menu.main-nav li#menu-item-405428 > .sub-menu {
-    max-width: calc(100vw - 28px) !important;
-    padding: 6px 8px !important;
-  }
-}
-*/
-/* ---------- admin-bar safety ---------- */ /*
-body.admin-bar ul#menu-demo-top-top-menu.main-nav,
-body.admin-bar .global-wrap .global-stuff {
-  top: 36px;
-}
-*/
-/* ---------- ensure submenu links are easy to click ---------- */
-/*
-ul#menu-demo-top-top-menu.main-nav li#menu-item-405428 > .sub-menu a,
-ul#menu-demo-top-top-menu.main-nav li#menu-item-405428 .sub-menu .sub-menu a {
+.global-nav {
   display: block;
-  padding: 6px 4px;
-  box-sizing: border-box;
-} */
-
-/* ---------- optional debug outline: uncomment during testing ----------
-ul#menu-demo-top-top-menu.main-nav li#menu-item-405428 > .sub-menu { outline: 2px dashed rgba(0,128,255,0.25) !important; }
---------------------------------------------------------------------- */
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative; /* changed from absolute */
+  top: 0;
+  z-index: var(--z-modal);
+  right: 0;
+  font-size: 17px;
+  letter-spacing: 0.09px;
+	margin-left: auto;
+	margin-right: 180px;
+	width: fit-content;
+}
