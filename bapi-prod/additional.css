@@ -1,0 +1,101 @@
+/* Fix: close the input/textarea rule, then apply full-width overrides */
+
+/* Restore proper input sizing */
+input,
+.input-text,
+input[type=email],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+textarea {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+/* Ensure the site container is full-width */
+.site,
+#page {
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure header and col-full containers expand too */
+.site-header .header-wrap,
+.col-full {
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Optional: prevent top-right toolbar from clipping (only if you see overflow) */
+.global-wrap .global-stuff {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: flex-end;
+  right: 0;
+  left: auto;
+  max-width: calc(100% - 36px);
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+.global-wrap .global-stuff .item a {
+  display: inline-block;
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.global-wrap .global-stuff .menu-item .sub-menu,
+.global-wrap .region-wrap {
+  right: 0;
+  left: auto;
+  transform-origin: top right;
+}
+
+/* GTranslate global dropdown fix — Apply site-wide (Appearance → Customize → Additional CSS)
+   Forces the GTranslate dropdown to render fixed and on top so it won't be clipped by ancestors
+   that have overflow:hidden or transforms.
+*/
+[id^="gtranslate_menu_wrapper_"] .gt_switcher .gt_container--yaz0yc,
+[id^="gtranslate_menu_wrapper_"] .gt_switcher .gt_container--yaz0yc > *,
+.gt_switcher .gt_container--yaz0yc,
+.gt_container--yaz0yc,
+#google_translate_element2 .gt_container--yaz0yc,
+iframe.goog-te-menu-frame,
+.goog-te-menu-frame {
+  position: fixed !important;
+  top: 64px !important;        /* Adjust if your header is taller */
+  right: 16px !important;      /* aligns to the right of header */
+  left: auto !important;
+  z-index: 2147483647 !important; /* very high z-index so it appears above everything */
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
+/* Ensure child elements receive pointer events */
+[id^="gtranslate_menu_wrapper_"] .gt_switcher .gt_container--yaz0yc *,
+.gt_switcher .gt_container--yaz0yc * {
+  pointer-events: auto !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  [id^="gtranslate_menu_wrapper_"] .gt_switcher .gt_container--yaz0yc,
+  .gt_switcher .gt_container--yaz0yc,
+  .gt_container--yaz0yc,
+  iframe.goog-te-menu-frame {
+    top: 56px !important;
+    right: 12px !important;
+    max-height: calc(100vh - 72px) !important;
+    overflow: auto !important;
+  }
+}
