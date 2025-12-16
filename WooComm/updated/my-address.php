@@ -1,4 +1,5 @@
 <?php
+
 /**
  * My Addresses
  *
@@ -15,50 +16,50 @@
  * @version 9.3.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 $customer_id = get_current_user_id();
 
 // Custom BAPI address book logic (from previous template)
-$primary_address = get_field( 'primary_address', 'user_' . $customer_id );
-$address_book    = get_field( 'address_book', 'user_' . $customer_id );
+$primary_address = get_field('primary_address', 'user_' . $customer_id);
+$address_book    = get_field('address_book', 'user_' . $customer_id);
 
 ?>
 <div class="address-book">
-<?php
-// Primary Address Block
+    <?php
+    // Primary Address Block
 
-echo '<div class="primary">
+    echo '<div class="primary">
 <div class="header">
 <h3>Primary Address</h3>';
-if ( $primary_address['address']['address_1'] === '' && $primary_address['address']['city'] === '' && $primary_address['address']['state'] === '' ) {
-	echo '<a href="#" class="add_primary_address">Add Address</a>';
-}
+    if ($primary_address['address']['address_1'] === '' && $primary_address['address']['city'] === '' && $primary_address['address']['state'] === '') {
+        echo '<a href="#" class="add_primary_address">Add Address</a>';
+    }
 
-echo '</div>
+    echo '</div>
 <p>This address is used as the default shipping and billing address for your online orders. It is also used as the basis for product and service tax calculations.</p>';
 
-if ( $primary_address && $primary_address['address']['address_1'] !== '' && $primary_address['address']['city'] !== '' && $primary_address['address']['state'] !== '' ) {
-	echo WC()->countries->get_formatted_address( $primary_address['address'] );
-}
-echo '</div>';
+    if ($primary_address && $primary_address['address']['address_1'] !== '' && $primary_address['address']['city'] !== '' && $primary_address['address']['state'] !== '') {
+        echo WC()->countries->get_formatted_address($primary_address['address']);
+    }
+    echo '</div>';
 
-// Address Book Block
-echo '<div class="additional"><div class="header"><h3>Address Book</h3><a href="#" class="add_address_book_item">Add Address</a></div>';
-if ( ! empty( $address_book ) ) {
-	echo '<ul>';
-	while ( have_rows( 'address_book', 'user_' . $customer_id ) ) {
-		the_row();
-		$address_index = get_row_index() - 1;
-		echo '<li>' .
-		WC()->countries->get_formatted_address( get_sub_field( 'address' ) ) .
-		'<div class="actions"><a data-row_index="' . $address_index . '" data-user_id="' . $customer_id . '" href="#" class="edit">Edit</a><a data-row_index="' . $address_index . '" data-user_id="' . $customer_id . '" href="#" class="delete">Delete</a></div>' .
-		'</li>';
-	}
-	echo '</ul>';
-} else {
-	echo '<p>You do not currently have any saved addresses.</p>';
-}
-echo '</div>';
-?>
+    // Address Book Block
+    echo '<div class="additional"><div class="header"><h3>Address Book</h3><a href="#" class="add_address_book_item">Add Address</a></div>';
+    if (! empty($address_book)) {
+        echo '<ul>';
+        while (have_rows('address_book', 'user_' . $customer_id)) {
+            the_row();
+            $address_index = get_row_index() - 1;
+            echo '<li>' .
+                WC()->countries->get_formatted_address(get_sub_field('address')) .
+                '<div class="actions"><a data-row_index="' . $address_index . '" data-user_id="' . $customer_id . '" href="#" class="edit">Edit</a><a data-row_index="' . $address_index . '" data-user_id="' . $customer_id . '" href="#" class="delete">Delete</a></div>' .
+                '</li>';
+        }
+        echo '</ul>';
+    } else {
+        echo '<p>You do not currently have any saved addresses.</p>';
+    }
+    echo '</div>';
+    ?>
 </div>
