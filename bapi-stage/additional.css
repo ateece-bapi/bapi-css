@@ -37,3 +37,42 @@ textarea {
 	margin-right: 180px;
 	width: fit-content;
 }
+
+/* Hide language selector dropdown by default */
+#menu-item-417468 .sub-menu {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Show language selector dropdown when parent is active/hovered */
+#menu-item-417468.active .sub-menu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Hide GTranslate language selector by default */
+.gt_switcher {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Show GTranslate when Select Language menu item is active/hovered */
+#menu-item-417468.active ~ .menu-item-gtranslate .gt_switcher,
+#menu-item-417468.active .gt_switcher,
+#menu-item-417468:hover ~ .menu-item-gtranslate .gt_switcher,
+#menu-item-417468:hover .gt_switcher {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  position: absolute !important;
+  right: 180px !important;
+  top: 50px !important;
+  z-index: 35000 !important;
+}
